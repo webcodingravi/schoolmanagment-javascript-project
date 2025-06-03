@@ -21,7 +21,7 @@
         <option>2022-23</option>
     </select>
     <aside id="sidenav"
-        class="fixed top-12 left-0 w-[150px] h-full overflow-auto flex flex-col items-center py-8 gap-8">
+        class="fixed top-12 left-0 w-[150px] h-full overflow-auto flex flex-col items-center py-15 gap-8">
         <a href="./dashboard.html">
             <button
                 class="flex flex-col justify-center items-center bg-white w-[80px] h-[80px] rounded hover:bg-rose-50 hover:font-medium cursor-pointer">
@@ -120,7 +120,7 @@
 
                 </button>
                 <div>
-                    <h1 class="text-3xl font-bold text-white">Students</h1>
+                    <h1 class="text-2xl font-bold text-white">Students</h1>
                     <p class="text-xl text-gray-200 text-medum">1459</p>
                 </div>
             </div>
@@ -132,7 +132,7 @@
 
                 </button>
                 <div>
-                    <h1 class="text-3xl font-bold text-white">Teachers</h1>
+                    <h1 class="text-2xl font-bold text-white">Teachers</h1>
                     <p class="text-xl text-gray-200 text-medum">16</p>
                 </div>
             </div>
@@ -144,7 +144,7 @@
 
                 </button>
                 <div>
-                    <h1 class="text-3xl font-bold text-white">Employees</h1>
+                    <h1 class="text-2xl font-bold text-white">Employees</h1>
                     <p class="text-xl text-gray-200 text-medum">14</p>
                 </div>
             </div>
@@ -157,13 +157,24 @@
 
                 </button>
                 <div>
-                    <h1 class="text-3xl font-bold text-white">Subjects</h1>
+                    <h1 class="text-2xl font-bold text-white">Subjects</h1>
                     <p class="text-xl text-gray-200 text-medum">7</p>
                 </div>
             </div>
 
+            <div class="col-span-4 flex gap-12">
+                <div class="flex-1">
+                    <h1 class="text-xl font-semibold">Admission Overviews</h1>
+                    <canvas id="admission-chart" width="400" height="200" class="cursor-pointer"></canvas>
+                </div>
 
-            <div class="col-span-2" id="admission-chart"></div>
+                <div class="col-span-2 space-y-4">
+                    <h1 class="text-xl font-semibold">Payment Status</h1>
+                    <canvas id="payment-chart" width="500" height="300" class="cursor-pointer"></canvas>
+                </div>
+
+            </div>
+
 
         </div>
 
