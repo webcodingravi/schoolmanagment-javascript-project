@@ -8,7 +8,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
     <link rel="stylesheet" href="./css/commen.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.9.0/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
 
@@ -25,10 +29,19 @@
                 </div>
                 <form class="space-y-5" onsubmit="signup(event)">
                     <div class="border-b border-b-slate-300 flex gap-3 items-center">
-                        <i class="ri-user-3-line text-xl text-slate-400"></i>
-                        <input id="fullname" required class="flex flex-1 focus:outline-none py-2 placeholder-slate-400"
-                            placeholder="Fullname" />
+                        <i class="ri-building-line text-xl text-slate-400 mt-[2px]"></i>
+                        <input id="schoolName" type="text" required
+                            class="flex flex-1 focus:outline-none py-2 placeholder-slate-400"
+                            placeholder="School Name" />
                     </div>
+
+
+                    <div class="border-b border-b-slate-300 flex gap-3 items-center">
+                        <i class="ri-user-3-line text-xl text-slate-400"></i>
+                        <input id="dirName" required class="flex flex-1 focus:outline-none py-2 placeholder-slate-400"
+                            placeholder="Director Name" />
+                    </div>
+
 
                     <div class="border-b border-b-slate-300 flex gap-3 items-center">
                         <i class="ri-cellphone-line text-xl text-slate-400 mt-[2px]"></i>
