@@ -1,3 +1,7 @@
+window.onload = async() => {
+   await getSession();
+}
+
 const createSalery = (e) => {
     e.preventDefault();
     const employee = document.getElementById('employee').value.trim();

@@ -1,3 +1,6 @@
+window.onload = async() => {
+   await getSession();
+}
 const createTeacher = (e) => {
  e.preventDefault();
  const teacherName = document.getElementById('teacherName').value.trim();

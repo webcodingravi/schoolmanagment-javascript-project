@@ -1,3 +1,7 @@
+window.onload = async() => {
+   await getSession();
+}
+
 const createClass = (e) => {
    e.preventDefault();
    const classes = document.getElementById('class').value.trim();

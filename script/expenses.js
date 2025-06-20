@@ -1,3 +1,7 @@
+window.onload = async() => {
+   await getSession();
+}
+
 const createExpense = (e) => {
  e.preventDefault();
  const title = document.getElementById('title').value.trim();
