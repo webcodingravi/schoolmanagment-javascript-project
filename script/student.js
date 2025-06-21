@@ -67,25 +67,26 @@ const createAdmission = async(e) => {
 const fetchStudents = async () => {
      const res = await axios.get("/student",getSessionForServer())
      const studentsBox = document.getElementById('students');
+     console.log(res.data)
      for(let student of res.data) {
       const ui = `<div class="rounded-lg flex flex-col justify-center items-center p-6 shadow-lg gap-4">
                 <img src="../image/student.jpg" class="w-[100px] h-[100px] object-cover cursor-pointer rounded-full" />
                 <div class="text-center">
                     <div class="mb-5 flex flex-col">
-                        <h1 class="text-lg font-medium mb-2">${student.studentName}</h1>
+                        <h1 class="text-lg font-medium mb-2 capitalize">${student.studentName}</h1>
                         <label class="text-gray-600">${student.email}</label>
-                        <label class="text-gray-600 text-xs">${student.mobile}</label>
+                        <label class="text-gray-600 text-xs">+91-${student.mobile}</label>
                     </div>
 
                     <div class="space-x-3">
                         <button
                             class="bg-linear-to-t from-blue-500 to-purple-500 text-white font-medium py-1 px-3 rounded cursor-pointer">
-                            Class - 6
+                            Class - ${student.class}/${student.section}
                         </button>
 
                         <button
                             class="bg-linear-to-t from-rose-500 to-orange-500 text-white font-medium py-1 px-2.5 rounded cursor-pointer">
-                            Class - 6
+                            Roll - ${student.roll}
                         </button>
                     </div>
                 </div>
