@@ -95,11 +95,15 @@ const deleteSubject = async(id) => {
 const editSubject = (subject,fullmarks,id) => {
     const subjectFields = document.getElementById('subject');
     const fullmarksFields = document.getElementById('fullmarks');
+    const addBtn = document.getElementById('add-btn');
+    const addText = document.getElementById('add-text');
     openDrawer() 
 
     subjectFields.value = subject;
     fullmarksFields.value = fullmarks;
     editId = id;
+    addBtn.innerHTML = "Save Now"
+    addText.innerHTML = "Edit Subject"
 }
 
 const saveSubject = async() => {

@@ -123,7 +123,7 @@
             </div>
             <div class="space-x-4">
                 <input type="search" class="p-2 rounded border border-gray-200 w-[300px] py-2 px-3 focus:outline-none"
-                    placeholder="Search this content">
+                    placeholder="Search this content" oninput="searchClass(this)">
 
                 <button onclick="openDrawer()"
                     class="bg-linear-to-t from-pink-500 to-rose-500 text-white font-medium px-6 py-2 rounded cursor-pointer transition hover:scale-105">
@@ -141,8 +141,8 @@
     <div id="drawer" class="fixed top-0 right-0 h-full bg-white shadow-2xl overflow-auto"
         style="width:0; transition:0.3s;">
         <div class="flex justify-between items-center p-6 border-b border-b-gray-100">
-            <h1 class="text-lg font-medium">Add a new class</h1>
-            <i onclick="closeDrawer()" class="ri-close-circle-fill cursor-pointer"></i>
+            <h1 class="text-lg font-medium" id="add-text">Add a new class</h1>
+            <i onclick="closeDrawer(true)" class="ri-close-circle-fill cursor-pointer"></i>
         </div>
         <form class="grid grid-cols-2 gap-8 p-6" onsubmit="createClass(event)">
             <div class="flex flex-col gap-2">
@@ -160,7 +160,8 @@
             <div class="flex flex-col gap-2 col-span-2">
                 <label class="text-gray-600 text-base font-medium">Class teacher</label>
                 <select id="classTeacher"
-                    class="border border-gray-300 rounded px-3 py-2 focus:outline-none; capitalize">
+                    class="border border-gray-300 rounded px-3 py-2 focus:outline-none capitalize">
+                    <option value="" selected>Please Select..</option>
                 </select>
             </div>
 
@@ -177,7 +178,8 @@
 
             <div>
                 <button
-                    class="bg-linear-to-t from-pink-500 to-rose-500 text-white font-medium px-8 py-2.5 rounded cursor-pointer transition hover:scale-105">
+                    class="bg-linear-to-t from-pink-500 to-rose-500 text-white font-medium px-8 py-2.5 rounded cursor-pointer transition hover:scale-105"
+                    id="add-btn">
                     <i class="ri-arrow-right-line"></i>
                     Add now</button>
             </div>

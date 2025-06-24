@@ -6,7 +6,10 @@ const openDrawer = () => {
  drawer.style.width = '50%';
 }
 
-const closeDrawer = () => {
+const closeDrawer = (redirect=false) => {
+    if(redirect) {
+        location.href = location.href
+    }
     drawer.style.width = '0';
 }
 
