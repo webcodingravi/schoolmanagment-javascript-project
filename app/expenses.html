@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/commen.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.9.0/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
 </head>
 
 <body>
@@ -46,6 +47,13 @@
             </button>
         </a>
 
+        <a href="./employees.html">
+            <button
+                class="flex flex-col justify-center items-center bg-white w-[80px] h-[80px] rounded hover:bg-rose-50 hover:font-medium cursor-pointer">
+                <i class="ri-user-2-line text-lg"></i>
+                <label class="text-[12px] font-bold">Employees</label>
+            </button>
+        </a>
         <a href="./subjects.html">
             <button
                 class="flex flex-col justify-center items-center bg-white w-[80px] h-[80px] rounded hover:bg-rose-50 hover:font-medium cursor-pointer">
@@ -108,7 +116,7 @@
 
     <section class="ml-[150px] p-8 space-y-8" style="width: calc(100% - 150px)">
         <div class="bg-white p-12 rounded-xl flex flex-col items-center gap-1">
-            <img src="../image/logo.avif" class="w-30">
+            <img src="../image/logo.avif" class="w-30" id="main-logo">
             <h1 class="text-2xl font-medium" id="school-name"></h1>
             <p class="text-gray-500 text-sm" id="email"></p>
         </div>
@@ -121,7 +129,7 @@
             </div>
             <div class="space-x-4">
                 <input type="search" class="p-2 rounded border border-gray-200 w-[300px] py-2 px-3 focus:outline-none"
-                    placeholder="Search this content">
+                    placeholder="Search this content" oninput="searchExpense(this)">
 
                 <button onclick="openDrawer()"
                     class="bg-linear-to-t from-pink-500 to-rose-500 text-white font-medium px-6 py-2 rounded cursor-pointer transition hover:scale-105">
@@ -141,95 +149,9 @@
                     <th>Action</th>
                 </tr>
 
-                <tr class="border-b border-gray-100 text-zinc-600">
-                    <td class="py-3 pl-4">Electricity bill</td>
-                    <td>This is my first bill</td>
-                    <td>₹2000</td>
-                    <td>June 2, 2025 10:00 Am</td>
-                    <td>
-                        <div class="space-x-3">
-                            <button class="bg-green-400 px-2 py-1 rounded text-white hover:bg-green-500 cursor-pointer">
-                                <i class="ri-edit-line"></i>
-                            </button>
-                            <button class="bg-rose-400 px-2 py-1 rounded text-white hover:bg-rose-500 cursor-pointer">
-                                <i class="ri-delete-bin-line"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr class="border-b border-gray-100 text-zinc-600">
-                    <td class="py-3 pl-4">Electricity bill</td>
-                    <td>This is my first bill</td>
-                    <td>₹2000</td>
-                    <td>June 2, 2025 10:00 Am</td>
-                    <td>
-                        <div class="space-x-3">
-                            <button class="bg-green-400 px-2 py-1 rounded text-white hover:bg-green-500 cursor-pointer">
-                                <i class="ri-edit-line"></i>
-                            </button>
-                            <button class="bg-rose-400 px-2 py-1 rounded text-white hover:bg-rose-500 cursor-pointer">
-                                <i class="ri-delete-bin-line"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
+                <tbody id="expenses"></tbody>
 
 
-                <tr class="border-b border-gray-100 text-zinc-600">
-                    <td class="py-3 pl-4">Electricity bill</td>
-                    <td>This is my first bill</td>
-                    <td>₹2000</td>
-                    <td>June 2, 2025 10:00 Am</td>
-                    <td>
-                        <div class="space-x-3">
-                            <button class="bg-green-400 px-2 py-1 rounded text-white hover:bg-green-500 cursor-pointer">
-                                <i class="ri-edit-line"></i>
-                            </button>
-                            <button class="bg-rose-400 px-2 py-1 rounded text-white hover:bg-rose-500 cursor-pointer">
-                                <i class="ri-delete-bin-line"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-
-
-
-                <tr class="border-b border-gray-100 text-zinc-600">
-                    <td class="py-3 pl-4">Electricity bill</td>
-                    <td>This is my first bill</td>
-                    <td>₹2000</td>
-                    <td>June 2, 2025 10:00 Am</td>
-                    <td>
-                        <div class="space-x-3">
-                            <button class="bg-green-400 px-2 py-1 rounded text-white hover:bg-green-500 cursor-pointer">
-                                <i class="ri-edit-line"></i>
-                            </button>
-                            <button class="bg-rose-400 px-2 py-1 rounded text-white hover:bg-rose-500 cursor-pointer">
-                                <i class="ri-delete-bin-line"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-
-
-
-                <tr class="border-b border-gray-100 text-zinc-600">
-                    <td class="py-3 pl-4">Electricity bill</td>
-                    <td>This is my first bill</td>
-                    <td>₹2000</td>
-                    <td>June 2, 2025 10:00 Am</td>
-                    <td>
-                        <div class="space-x-3">
-                            <button class="bg-green-400 px-2 py-1 rounded text-white hover:bg-green-500 cursor-pointer">
-                                <i class="ri-edit-line"></i>
-                            </button>
-                            <button class="bg-rose-400 px-2 py-1 rounded text-white hover:bg-rose-500 cursor-pointer">
-                                <i class="ri-delete-bin-line"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
             </table>
         </div>
     </section>
@@ -256,8 +178,8 @@
 
             <div class="flex flex-col gap-2 col-span-2">
                 <label class="text-gray-600 text-base font-medium">Description</label>
-                <textarea id="description" rows="5"
-                    class="border border-gray-300 rounded px-3 py-2 focus:outline-none"> </textarea>
+                <textarea id="description" rows="5" class="border border-gray-300 rounded px-3 py-2 focus:outline-none"
+                    placeholder="Description"></textarea>
             </div>
 
 

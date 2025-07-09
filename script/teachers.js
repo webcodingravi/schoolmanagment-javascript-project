@@ -1,4 +1,5 @@
 axios.defaults.baseURL = server;
+let teacherData = null;
 window.onload = async() => {
    await getSession();
    fetchTeachers()
@@ -38,7 +39,7 @@ const createTeacher = async(e) => {
  }
 
  try{
-   const res = await axios.post("/teacher",payload,getSessionForServer())
+   await axios.post("/teacher",payload,getSessionForServer())
    new Swal({
        icon:"success",
        title:"Teacher Create !"
@@ -59,11 +60,14 @@ const createTeacher = async(e) => {
 const fetchTeachers = async() => {
   try{
     const res = await axios.get("/teacher",getSessionForServer()) 
-    console.log(res.data);
+    teacherData = res.data
     const teachers = document.getElementById('teachers');
     for(let teacher of res.data) {
       const ui = `<div class="rounded-lg flex flex-col justify-center items-center p-6 shadow-lg gap-4">
-                <img src="../image/student.jpg" class="w-[100px] h-[100px] object-cover cursor-pointer rounded-full" />
+                  <div class="relative w-[100px] h-[100px] rounded">
+                 <img src="../image/student.jpg" class="w-full h-full object-cover cursor-pointer rounded-full" />
+                <input type="file" class="absolute top-0 left-0 h-full w-full opacity-0 cursor-pointer" accept="image*/" />
+                 </div>
                 <div class="text-center">
                     <div class="mb-5 flex flex-col">
                         <h1 class="text-lg font-medium mb-2 capitalize">${teacher.teacherName}</h1>
@@ -93,4 +97,44 @@ const fetchTeachers = async() => {
       text:err.response ? err.response.data.message : err.message
     })
   }
+}
+
+
+const searchTeacher = async(input) => {
+ const value = input.value.toLowerCase().trim();
+ const data = teacherData.filter((item)=>{
+   return item.teacherName.toLowerCase().includes(value)
+ })
+
+  const teachers = document.getElementById('teachers');
+  teachers.innerHTML = '';
+    for(let teacher of data) {
+      const ui = `<div class="rounded-lg flex flex-col justify-center items-center p-6 shadow-lg gap-4">
+                 <div class="relative w-[100px] h-[100px] rounded">
+                 <img src="../image/student.jpg" class="w-full h-full object-cover cursor-pointer rounded-full" />
+                <input type="file" class="absolute top-0 left-0 h-full w-full opacity-0 cursor-pointer" accept="image*/" />
+                 </div>
+                <div class="text-center">
+                    <div class="mb-5 flex flex-col">
+                        <h1 class="text-lg font-medium mb-2 capitalize">${teacher.teacherName}</h1>
+                        <label class="text-gray-600">${teacher.email}</label>
+                        <label class="text-gray-600 text-xs">+91-${teacher.mobile}</label>
+                    </div>
+
+                    <div class="space-x-2">
+                        <button
+                            class="border border-gray-200 px-2 py-[3px] text-xs text-gray-600 cursor-pointer">Sci</button>
+                        <button
+                            class="border border-gray-200 px-2 py-[3px] text-xs text-gray-600 cursor-pointer">Eng</button>
+                        <button
+                            class="border border-gray-200 px-2 py-[3px] text-xs text-gray-600 cursor-pointer">Mat</button>
+                        <button
+                            class="border border-gray-200 px-2 py-[3px] text-xs text-gray-600 cursor-pointer">Com</button>
+                    </div>
+                </div>
+            </div>`
+            teachers.innerHTML +=ui;
+    }
+
+
 }

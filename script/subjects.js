@@ -1,5 +1,6 @@
 axios.defaults.baseURL = server;
 let editId = null;
+let searchData = null;
 window.onload = async() => {
    await getSession();
    fetchSubjects();
@@ -45,6 +46,7 @@ const createSubject = async(e) => {
 
 const fetchSubjects = async() => {
      const res = await axios.get("/subject",getSessionForServer())
+     searchData = res.data
      const subjects = document.getElementById('subjects');
 
      for(let item of res.data) {
@@ -135,6 +137,38 @@ const saveSubject = async() => {
    }
 }
 
+const searchSubject = async(input) => {
+  const value = input.value.toLowerCase().trim()
+  const data = await searchData.filter((item)=>{
+    return item.subjectName.toLowerCase().includes(value)
+  })
 
+const subjects = document.getElementById('subjects');
+subjects.innerHTML = '';
+for(let item of data) {
+    const ui = `<div class="rounded-lg flex flex-col justify-center items-center p-6 shadow-lg gap-4">
+        <i class="ri-git-repository-line text-6xl"></i>
+        <div class="text-center">
+            <div class="mb-5 flex flex-col">
+                <h1 class="text-lg font-medium mb-2 capitalize">${item.subjectName}</h1>
+                <label class="text-gray-600">${item.fullmarks} Marks</label>
+            </div>
+
+            <div class="space-x-3">
+                <button onclick=editSubject('${item.subjectName}','${item.fullmarks}','${item._id}')
+                    class="bg-green-400 hover:bg-green-500 w-10 h-10 rounded-full text-white cursor-pointer">
+                    <i class="ri-edit-line"></i>
+                </button>
+
+                <button class="bg-rose-400 hover:bg-rose-500 w-10 h-10 rounded-full text-white cursor-pointer" onclick=deleteSubject('${item._id}')>
+                    <i class="ri-delete-bin-line"></i>
+                </button>
+            </div>
+        </div>
+    </div>`
+    subjects.innerHTML += ui;
+}
+
+}
 
    

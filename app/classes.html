@@ -47,6 +47,14 @@
             </button>
         </a>
 
+        <a href="./employees.html">
+            <button
+                class="flex flex-col justify-center items-center bg-white w-[80px] h-[80px] rounded hover:bg-rose-50 hover:font-medium cursor-pointer">
+                <i class="ri-user-2-line text-lg"></i>
+                <label class="text-[12px] font-bold">Employees</label>
+            </button>
+        </a>
+
         <a href="./subjects.html">
             <button
                 class="flex flex-col justify-center items-center bg-white w-[80px] h-[80px] rounded hover:bg-rose-50 hover:font-medium cursor-pointer">
@@ -110,10 +118,11 @@
 
     <section class="ml-[150px] p-8 space-y-8" style="width: calc(100% - 150px)">
         <div class="bg-white p-12 rounded-xl flex flex-col items-center gap-1">
-            <img src="../image/logo.avif" class="w-30">
+            <img src="../image/logo.avif" class="w-30" id="main-logo">
             <h1 class="text-2xl font-medium" id="school-name"></h1>
             <p class="text-gray-500 text-sm" id="email"></p>
         </div>
+
         <div class="p-4 bg-white rounded-lg flex justify-between items-center">
             <div class="flex items-center gap-4">
                 <button class="w-12 h-12 bg-gray-100 rounded-full hover:bg-gray-200 cursor-pointer">
@@ -160,8 +169,8 @@
             <div class="flex flex-col gap-2 col-span-2">
                 <label class="text-gray-600 text-base font-medium">Class teacher</label>
                 <select id="classTeacher"
-                    class="border border-gray-300 rounded px-3 py-2 focus:outline-none capitalize">
-                    <option value="" selected>Please Select..</option>
+                    class="border border-gray-300 rounded px-3 py-2 focus:outline-none capitalize cursor-pointer">
+                    <option value="" hidden>Please Select..</option>
                 </select>
             </div>
 

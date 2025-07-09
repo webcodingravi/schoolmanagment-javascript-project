@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/commen.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.9.0/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
 
 </head>
 
@@ -44,6 +45,14 @@
                 class="flex flex-col justify-center items-center bg-white w-[80px] h-[80px] rounded hover:bg-rose-50 hover:font-medium cursor-pointer">
                 <i class="ri-user-2-line text-lg"></i>
                 <label class="text-[12px] font-bold">Teachers</label>
+            </button>
+        </a>
+
+        <a href="./employees.html">
+            <button
+                class="flex flex-col justify-center items-center bg-white w-[80px] h-[80px] rounded hover:bg-rose-50 hover:font-medium cursor-pointer">
+                <i class="ri-user-2-line text-lg"></i>
+                <label class="text-[12px] font-bold">Employees</label>
             </button>
         </a>
 
@@ -109,7 +118,7 @@
 
     <section class="ml-[150px] p-8 space-y-8" style="width: calc(100% - 150px)">
         <div class="bg-white p-12 rounded-xl flex flex-col items-center gap-1">
-            <img src="../image/logo.avif" class="w-30">
+            <img src="../image/logo.avif" class="w-30" id="main-logo">
             <h1 class="text-2xl font-medium" id="school-name"></h1>
             <p class="text-gray-500 text-sm" id="email"></p>
         </div>
@@ -127,10 +136,11 @@
                 <button onclick="openDrawer()"
                     class="bg-linear-to-t from-pink-500 to-rose-500 text-white font-medium px-6 py-2 rounded cursor-pointer transition hover:scale-105">
                     <i class="ri-add-line"></i>
-                    New class
+                    New Payment
                 </button>
             </div>
         </div>
+
 
         <div class="p-4 bg-white rounded-lg flex justify-between items-center">
             <div class="flex items-center gap-4">
@@ -155,209 +165,24 @@
                     <th>Status</th>
                     <th>Date</th>
                 </tr>
-                <tr class="border-b border-b-amber-200">
-                    <td class="py-4 pl-4">GTTY56</td>
-                    <td>
-                        <div class="flex gap-4 items-start">
-                            <img src="/image/student.jpg" class="w-10 h-10 rounded-full object-cover cursor-pointer">
-                            <div class="space-y-1">
-                                <h1 class="font-medium">Ravi kumar</h1>
-                                <div class="text-xs text-gray-500">
-                                    Class: 4(B) (R-5)
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td>Mr. Arnav Oberoy</td>
-                    <td>012345678</td>
-                    <td>
-                        <div class="bg-green-400 text-white w-fit font-medium rounded p-3 text-[10px] py-[2px] px-3">
-                            PAID
-                        </div>
-                    </td>
-                    <td>3 June, 2025</td>
-                </tr>
-
-                <tr class="border-b border-b-amber-200">
-                    <td class="py-4 pl-4">GTTY57</td>
-                    <td>
-                        <div class="flex gap-4 items-start">
-                            <img src="/image/student.jpg" class="w-10 h-10 rounded-full object-cover cursor-pointer">
-                            <div class="space-y-1">
-                                <h1 class="font-medium">Krish</h1>
-                                <div class="text-xs text-gray-500">
-                                    Class: 4(B) (R-5)
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td>Mr. Arnav Oberoy</td>
-                    <td>012345678</td>
-                    <td>
-                        <div class="bg-rose-400 text-white w-fit font-medium rounded p-3 text-[10px] py-[2px] px-3">
-                            DUES
-                        </div>
-                    </td>
-                    <td>3 June, 2025</td>
-                </tr>
-
-                <tr class="border-b border-b-amber-200">
-                    <td class="py-4 pl-4">GTTY56</td>
-                    <td>
-                        <div class="flex gap-4 items-start">
-                            <img src="/image/student.jpg" class="w-10 h-10 rounded-full object-cover cursor-pointer">
-                            <div class="space-y-1">
-                                <h1 class="font-medium">Ravi kumar</h1>
-                                <div class="text-xs text-gray-500">
-                                    Class: 4(B) (R-5)
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td>Mr. Arnav Oberoy</td>
-                    <td>012345678</td>
-                    <td>
-                        <div class="bg-green-400 text-white w-fit font-medium rounded p-3 text-[10px] py-[2px] px-3">
-                            PAID
-                        </div>
-                    </td>
-                    <td>3 June, 2025</td>
-                </tr>
-
-                <tr class="border-b border-b-amber-200">
-                    <td class="py-4 pl-4">GTTY57</td>
-                    <td>
-                        <div class="flex gap-4 items-start">
-                            <img src="/image/student.jpg" class="w-10 h-10 rounded-full object-cover cursor-pointer">
-                            <div class="space-y-1">
-                                <h1 class="font-medium">Krish</h1>
-                                <div class="text-xs text-gray-500">
-                                    Class: 4(B) (R-5)
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td>Mr. Arnav Oberoy</td>
-                    <td>012345678</td>
-                    <td>
-                        <div class="bg-rose-400 text-white w-fit font-medium rounded p-3 text-[10px] py-[2px] px-3">
-                            DUES
-                        </div>
-                    </td>
-                    <td>3 June, 2025</td>
-                </tr>
-
-
-                <tr class="border-b border-b-amber-200">
-                    <td class="py-4 pl-4">GTTY56</td>
-                    <td>
-                        <div class="flex gap-4 items-start">
-                            <img src="/image/student.jpg" class="w-10 h-10 rounded-full object-cover cursor-pointer">
-                            <div class="space-y-1">
-                                <h1 class="font-medium">Ravi kumar</h1>
-                                <div class="text-xs text-gray-500">
-                                    Class: 4(B) (R-5)
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td>Mr. Arnav Oberoy</td>
-                    <td>012345678</td>
-                    <td>
-                        <div class="bg-green-400 text-white w-fit font-medium rounded p-3 text-[10px] py-[2px] px-3">
-                            PAID
-                        </div>
-                    </td>
-                    <td>3 June, 2025</td>
-                </tr>
-
-                <tr class="border-b border-b-amber-200">
-                    <td class="py-4 pl-4">GTTY57</td>
-                    <td>
-                        <div class="flex gap-4 items-start">
-                            <img src="/image/student.jpg" class="w-10 h-10 rounded-full object-cover cursor-pointer">
-                            <div class="space-y-1">
-                                <h1 class="font-medium">Krish</h1>
-                                <div class="text-xs text-gray-500">
-                                    Class: 4(B) (R-5)
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td>Mr. Arnav Oberoy</td>
-                    <td>012345678</td>
-                    <td>
-                        <div class="bg-rose-400 text-white w-fit font-medium rounded p-3 text-[10px] py-[2px] px-3">
-                            DUES
-                        </div>
-                    </td>
-                    <td>3 June, 2025</td>
-                </tr>
-
-
-
-                <tr class="border-b border-b-amber-200">
-                    <td class="py-4 pl-4">GTTY56</td>
-                    <td>
-                        <div class="flex gap-4 items-start">
-                            <img src="/image/student.jpg" class="w-10 h-10 rounded-full object-cover cursor-pointer">
-                            <div class="space-y-1">
-                                <h1 class="font-medium">Ravi kumar</h1>
-                                <div class="text-xs text-gray-500">
-                                    Class: 4(B) (R-5)
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td>Mr. Arnav Oberoy</td>
-                    <td>012345678</td>
-                    <td>
-                        <div class="bg-green-400 text-white w-fit font-medium rounded p-3 text-[10px] py-[2px] px-3">
-                            PAID
-                        </div>
-                    </td>
-                    <td>3 June, 2025</td>
-                </tr>
-
-                <tr class="border-b border-b-amber-200">
-                    <td class="py-4 pl-4">GTTY57</td>
-                    <td>
-                        <div class="flex gap-4 items-start">
-                            <img src="/image/student.jpg" class="w-10 h-10 rounded-full object-cover cursor-pointer">
-                            <div class="space-y-1">
-                                <h1 class="font-medium">Krish</h1>
-                                <div class="text-xs text-gray-500">
-                                    Class: 4(B) (R-5)
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td>Mr. Arnav Oberoy</td>
-                    <td>012345678</td>
-                    <td>
-                        <div class="bg-rose-400 text-white w-fit font-medium rounded p-3 text-[10px] py-[2px] px-3">
-                            DUES
-                        </div>
-                    </td>
-                    <td>3 June, 2025</td>
-                </tr>
+                <tbody id="payment-table"></tbody>
             </table>
         </div>
 
     </section>
 
-
     <div id="drawer" class="fixed top-0 right-0 h-full bg-white shadow-2xl overflow-auto"
         style="width:0; transition:0.3s;">
         <div class="flex justify-between items-center p-6 border-b border-b-gray-100">
-            <h1 class="text-lg font-medium">Add a new class</h1>
+            <h1 class="text-lg font-medium">New Bill</h1>
             <i onclick="closeDrawer()" class="ri-close-circle-fill cursor-pointer"></i>
         </div>
-        <form class="grid grid-cols-2 gap-8 p-6" onsubmit="createClass(event)">
+        <form class="grid grid-cols-2 gap-8 p-6" onsubmit="createPayment(event)">
             <div class="flex flex-col gap-2">
-                <label class="text-gray-600 text-base font-medium">Class</label>
-                <input id="class" type="text" class="border border-gray-300 rounded px-3 py-2 focus:outline-none"
-                    placeholder="KG" required />
+                <label class="text-gray-600 text-base font-medium">Student</label>
+                <select class="border border-gray-300 rounded px-3 py-2 focus:outline-none cursor-pointer" id="student">
+                    <option value="" hidden>Please Select..</option>
+                </select>
             </div>
 
             <div class="flex flex-col gap-2">
@@ -367,39 +192,28 @@
             </div>
 
             <div class="flex flex-col gap-2 col-span-2">
-                <label class="text-gray-600 text-base font-medium">Class teacher</label>
-                <select id="classTeacher" class="border border-gray-300 rounded px-3 py-2 focus:outline-none">
-                    <option value="ravi kumar">Ravi kumar</option>
-                    <option value="krish">Krish</option>
-                    <option value="pawan">Pawan</option>
-                    <option value="karan">Karan</option>
-                </select>
+                <label class="text-gray-600 text-base font-medium">Date</label>
+                <input id="feeDate" type="date" class="border border-gray-300 rounded px-3 py-2 focus:outline-none"
+                    required />
             </div>
 
-            <div class="flex flex-col gap-2 col-span-2">
-                <label class="text-gray-600 text-base font-medium">Sections</label>
-                <select id="sections" class="border border-gray-300 rounded px-3 py-2 focus:outline-none" multiple>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-
-                </select>
-            </div>
 
             <div>
                 <button
                     class="bg-linear-to-t from-pink-500 to-rose-500 text-white font-medium px-8 py-2.5 rounded cursor-pointer transition hover:scale-105">
                     <i class="ri-arrow-right-line"></i>
-                    Add now</button>
+                    Submit</button>
             </div>
-        </form>
+    </div>
+
+    </form>
 
     </div>
 
 </body>
 
+
 <script src="../script/commen.js"></script>
-<script src="../script/classes.js"></script>
+<script src="../script/payments.js"></script>
 
 </html>

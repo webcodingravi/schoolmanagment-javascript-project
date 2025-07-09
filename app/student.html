@@ -47,6 +47,14 @@
             </button>
         </a>
 
+        <a href="./employees.html">
+            <button
+                class="flex flex-col justify-center items-center bg-white w-[80px] h-[80px] rounded hover:bg-rose-50 hover:font-medium cursor-pointer">
+                <i class="ri-user-2-line text-lg"></i>
+                <label class="text-[12px] font-bold">Employees</label>
+            </button>
+        </a>
+
         <a href="./subjects.html">
             <button
                 class="flex flex-col justify-center items-center bg-white w-[80px] h-[80px] rounded hover:bg-rose-50 hover:font-medium cursor-pointer">
@@ -109,7 +117,7 @@
 
     <section class="ml-[150px] p-8 space-y-8" style="width: calc(100% - 150px)">
         <div class="bg-white p-12 rounded-xl flex flex-col items-center gap-1">
-            <img src="../image/logo.avif" class="w-30">
+            <img src="../image/logo.avif" class="w-30" id="main-logo">
             <h1 class="text-2xl font-medium" id="school-name"></h1>
             <p class="text-gray-500 text-sm" id="email"></p>
         </div>
@@ -122,7 +130,7 @@
             </div>
             <div class="space-x-4">
                 <input type="search" class="p-2 rounded border border-gray-200 w-[300px] py-2 px-3 focus:outline-none"
-                    placeholder="Search this content">
+                    placeholder="Search this content" oninput="searchStudent(this)">
 
                 <select class="px-6 py-2 rounded border border-gray-300 font-medium focus:outline-none cursor-pointer">
                     <option>Export</option>
@@ -170,7 +178,9 @@
 
             <div class="flex flex-col gap-2">
                 <label class="text-gray-600 text-base font-medium">Gender</label>
-                <select id="gender" class="border border-gray-300 rounded px-3 py-2 focus:outline-none" required>
+                <select id="gender" class="border border-gray-300 rounded px-3 py-2 focus:outline-none cursor-pointer"
+                    required>
+                    <option value="" hidden>Please Select...</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="other">Other</option>
@@ -186,7 +196,9 @@
 
             <div class="flex flex-col gap-2">
                 <label class="text-gray-600 text-base font-medium">Religion</label>
-                <select id="religion" class="border border-gray-300 rounded px-3 py-2 focus:outline-none" required>
+                <select id="religion" class="border border-gray-300 rounded px-3 py-2 focus:outline-none cursor-pointer"
+                    required>
+                    <option value="" hidden>Please Select...</option>
                     <option value="hindu">Hindu</option>
                     <option value="muslim">Muslim</option>
                     <option value="christian">Christian</option>
@@ -210,7 +222,9 @@
 
             <div class="flex flex-col gap-2">
                 <label class="text-gray-600 text-base font-medium">Class</label>
-                <select id="class" class="border border-gray-300 rounded px-3 py-2 focus:outline-none" required>
+                <select id="class" class="border border-gray-300 rounded px-3 py-2 focus:outline-none cursor-pointer"
+                    required>
+                    <option value="" hidden>Please Select...</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -220,7 +234,9 @@
 
             <div class="flex flex-col gap-2">
                 <label class="text-gray-600 text-base font-medium">Section</label>
-                <select id="section" class="border border-gray-300 rounded px-3 py-2 focus:outline-none" required>
+                <select id="section" class="border border-gray-300 rounded px-3 py-2 focus:outline-none cursor-pointer"
+                    required>
+                    <option value="" hidden>Please Select...</option>
                     <option value="A">A</option>
                     <option value="B">B</option>
                     <option value="C">C</option>

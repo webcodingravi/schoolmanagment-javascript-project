@@ -47,6 +47,14 @@
             </button>
         </a>
 
+        <a href="./employees.html">
+            <button
+                class="flex flex-col justify-center items-center bg-white w-[80px] h-[80px] rounded hover:bg-rose-50 hover:font-medium cursor-pointer">
+                <i class="ri-user-2-line text-lg"></i>
+                <label class="text-[12px] font-bold">Employees</label>
+            </button>
+        </a>
+
         <a href="./subjects.html">
             <button
                 class="flex flex-col justify-center items-center bg-white w-[80px] h-[80px] rounded hover:bg-rose-50 hover:font-medium cursor-pointer">
@@ -107,7 +115,7 @@
     </aside>
     <section class="ml-[150px] p-8 space-y-8" style="width: calc(100% - 150px)">
         <div class="bg-white p-12 rounded-xl flex flex-col items-center gap-1">
-            <img src="../image/logo.avif" class="w-30">
+            <img src="../image/logo.avif" class="w-30" id="main-logo">
             <h1 class="text-2xl font-medium" id="school-name"></h1>
             <p class="text-gray-500 text-sm" id="email"></p>
         </div>
@@ -121,7 +129,7 @@
             </div>
             <div class="space-x-3">
                 <input type="search" class="p-2 rounded border border-gray-200 w-[300px] py-2 px-3 focus:outline-none"
-                    placeholder="Search this content">
+                    placeholder="Search this content" oninput="searchSubject(this)">
                 <button onclick="openDrawer()"
                     class="bg-linear-to-t from-pink-500 to-rose-500 text-white font-medium px-6 py-2 rounded cursor-pointer transition hover:scale-105">
                     <i class=" ri-book-line"></i>

@@ -6,6 +6,7 @@ const openDrawer = () => {
  drawer.style.width = '50%';
 }
 
+
 const closeDrawer = (redirect=false) => {
     if(redirect) {
         location.href = location.href
@@ -26,6 +27,7 @@ const getSession = async() => {
            const res = await axios.post("/token/verify",{token:token})
            session = res.data
            showUserInfo();
+           
         }catch(err) {
             localStorage.clear()
 
@@ -52,12 +54,32 @@ const showUserInfo = () => {
     email.innerHTML = session.email
 }
 
-const getSessionForServer = () => {
+const getSessionForServer = (responseType = undefined) => {
     const token = localStorage.getItem("token");
     const options = {
       headers: {
         Authorization:`Bearer ${token}`
-      }
+        
+      },
+      responseType
     }
     return options
 }
+
+const fetchSchoolLogo = async() => {
+ try{
+     const res = await axios.get("/school/image",getSessionForServer('blob'))
+     const url = URL.createObjectURL(res.data);
+     const mainLogo = document.getElementById("main-logo");
+     mainLogo.src = url
+ }
+ catch(err) {
+    new Swal({
+        icon:"error",
+        title:"Failed",
+        text:err.response ? err.response.data : err.response
+    })
+ }
+}
+
+fetchSchoolLogo();

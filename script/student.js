@@ -1,7 +1,9 @@
 axios.defaults.baseURL = server;
+let students = null;
 window.onload = async() => {
    await getSession();
    fetchStudents();
+
 }
 
 const createAdmission = async(e) => {
@@ -44,7 +46,7 @@ const createAdmission = async(e) => {
      }
 
      try{
-        const admission =  await axios.post("/student",payload,getSessionForServer())
+        await axios.post("/student",payload,getSessionForServer())
         form.reset()
         closeDrawer()
         new Swal({
@@ -66,11 +68,14 @@ const createAdmission = async(e) => {
 
 const fetchStudents = async () => {
      const res = await axios.get("/student",getSessionForServer())
+     students = res.data;
      const studentsBox = document.getElementById('students');
-     console.log(res.data)
      for(let student of res.data) {
       const ui = `<div class="rounded-lg flex flex-col justify-center items-center p-6 shadow-lg gap-4">
-                <img src="../image/student.jpg" class="w-[100px] h-[100px] object-cover cursor-pointer rounded-full" />
+                 <div class="relative w-[100px] h-[100px] rounded">
+                 <img src="../image/student.jpg" class="w-full h-full object-cover cursor-pointer rounded-full" />
+                <input type="file" class="absolute top-0 left-0 h-full w-full opacity-0 cursor-pointer" accept="image*/"/>
+                 </div>
                 <div class="text-center">
                     <div class="mb-5 flex flex-col">
                         <h1 class="text-lg font-medium mb-2 capitalize">${student.studentName}</h1>
@@ -96,3 +101,43 @@ const fetchStudents = async () => {
      }
       
 }
+
+const searchStudent = (input) => {
+    const keyword = input.value.trim();
+   const filteredStudent = students.filter((item)=>{
+       return item.studentName.toLowerCase().includes(keyword)
+    })
+     const studentsBox = document.getElementById('students');
+     studentsBox.innerHTML = '';
+     for(let student of filteredStudent) {
+      const ui = `<div class="rounded-lg flex flex-col justify-center items-center p-6 shadow-lg gap-4">
+                  <div class="relative w-[100px] h-[100px] rounded">
+                 <img src="../image/student.jpg" class="w-full h-full object-cover cursor-pointer rounded-full" />
+                <input type="file" class="absolute top-0 left-0 h-full w-full opacity-0 cursor-pointer" accept="image*/" />
+                 </div>
+                <div class="text-center">
+                    <div class="mb-5 flex flex-col">
+                        <h1 class="text-lg font-medium mb-2 capitalize">${student.studentName}</h1>
+                        <label class="text-gray-600">${student.email}</label>
+                        <label class="text-gray-600 text-xs">+91-${student.mobile}</label>
+                    </div>
+
+                    <div class="space-x-3">
+                        <button
+                            class="bg-linear-to-t from-blue-500 to-purple-500 text-white font-medium py-1 px-3 rounded cursor-pointer">
+                            Class - ${student.class}/${student.section}
+                        </button>
+
+                        <button
+                            class="bg-linear-to-t from-rose-500 to-orange-500 text-white font-medium py-1 px-2.5 rounded cursor-pointer">
+                            Roll - ${student.roll}
+                        </button>
+                    </div>
+                </div>
+            </div>`
+          studentsBox.innerHTML += ui;
+         
+     }
+
+}
+
