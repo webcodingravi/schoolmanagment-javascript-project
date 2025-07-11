@@ -2,7 +2,8 @@ axios.defaults.baseURL = server;
 let teacherData = null;
 window.onload = async() => {
    await getSession();
-   fetchTeachers()
+   await fetchTeachers()
+
 }
 const createTeacher = async(e) => {
  e.preventDefault();
@@ -61,12 +62,13 @@ const fetchTeachers = async() => {
   try{
     const res = await axios.get("/teacher",getSessionForServer()) 
     teacherData = res.data
+    fetchTeacherImage()
     const teachers = document.getElementById('teachers');
     for(let teacher of res.data) {
       const ui = `<div class="rounded-lg flex flex-col justify-center items-center p-6 shadow-lg gap-4">
                   <div class="relative w-[100px] h-[100px] rounded">
-                 <img src="../image/student.jpg" class="w-full h-full object-cover cursor-pointer rounded-full" />
-                <input type="file" class="absolute top-0 left-0 h-full w-full opacity-0 cursor-pointer" accept="image*/" />
+                 <img src="../image/student.jpg" class="w-full h-full object-cover cursor-pointer rounded-full" id="teacherImage" />
+                <input type="file" class="absolute top-0 left-0 h-full w-full opacity-0 cursor-pointer" accept="image*/" onChange=teacherImage(this,'${teacher._id}') />
                  </div>
                 <div class="text-center">
                     <div class="mb-5 flex flex-col">
@@ -112,7 +114,7 @@ const searchTeacher = async(input) => {
       const ui = `<div class="rounded-lg flex flex-col justify-center items-center p-6 shadow-lg gap-4">
                  <div class="relative w-[100px] h-[100px] rounded">
                  <img src="../image/student.jpg" class="w-full h-full object-cover cursor-pointer rounded-full" />
-                <input type="file" class="absolute top-0 left-0 h-full w-full opacity-0 cursor-pointer" accept="image*/" />
+                <input type="file" class="absolute top-0 left-0 h-full w-full opacity-0 cursor-pointer" onChange=teacherImage(this,'${teacher._id}') accept="image*/" />
                  </div>
                 <div class="text-center">
                     <div class="mb-5 flex flex-col">
@@ -137,4 +139,31 @@ const searchTeacher = async(input) => {
     }
 
 
+}
+
+
+const teacherImage = async(input,id) => {
+  try{
+    teacherId = id
+     const file = input.files[0]
+     const formData = new FormData()
+     formData.append('image',file)
+    
+     await axios.put(`/teacher/upload-image/${teacherId}`,formData,getSessionForServer())
+
+     new Swal({
+       icon:"success",
+       title:"Update Image !"
+     }).then(()=>{
+        location.href = location.href
+     })
+     
+  }
+  catch(err) {
+    new Swal({
+      icon:"error",
+      title:"Failed",
+      text:err.response ? err.response.data : err.message
+    })
+  }
 }

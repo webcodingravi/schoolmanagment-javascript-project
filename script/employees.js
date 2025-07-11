@@ -54,7 +54,7 @@ const createEmployee = async(e) => {
    new Swal({
       icon:"error",
       title:"Failed",
-      text:err.response ? err.response.data.message : response.message
+      text:err.response ? err.response.data.message : err.message
    })
  }
 
